@@ -104,7 +104,7 @@ Main training parameters:
 - `--model_name`: Model name, default is AGATENet
 - `--data_dir`: Dataset path, default is dehaze
 - `--data`: Dataset name, default is NH23
-- `--batch_size`: Batch size, default is 2
+- `--batch_size`: Batch size, default is 4
 - `--num_epoch`: Number of training iterations, default is 300
 - `--learning_rate`: Learning rate, default is 2e-5
 - `--valid_freq`: Validation frequency, default is 10
