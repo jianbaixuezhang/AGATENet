@@ -21,25 +21,23 @@ def test_moe_model(moe_model, args):
             else:
                 moe_model.load_state_dict(checkpoint)
         else:
-            print(f"警告: 测试模型文件 {args.test_model} 不存在（应为.pkl后缀）")
             return
     
     moe_model.eval()
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     moe_model = moe_model.to(device)
 
-    # 数据加载 - 与原始eval.py保持一致
+
     dataloader = test_dataloader(args.data_dir, batch_size=1, num_workers=0)
 
-    # 推理与评估
     psnr_list = []
     ssim_list = []
     
-    # 创建结果目录
+
     result_dir = args.result_dir if hasattr(args, 'result_dir') else 'test_results'
     os.makedirs(result_dir, exist_ok=True)
     
-    # 结果记录文件
+
     result_file = os.path.join(result_dir, 'test_result.txt')
     with open(result_file, 'w') as f_txt:
         f_txt.write("Image Name | PSNR | SSIM\n")
@@ -67,7 +65,6 @@ def test_moe_model(moe_model, args):
                 record = f"{name[0]:<20} {psnr:.2f} dB  {ssim_val:.4f}\n"
                 f_txt.write(record)
             
-            # 最终测试：生成详细的三联图对比
             if args.save_image:
                 # 保存单张结果图
                 save_name = os.path.join(result_dir, name[0])
@@ -90,4 +87,5 @@ def test_moe_model(moe_model, args):
     print(f"平均SSIM: {avg_ssim:.4f}")
     print(f"测试图像数量: {len(psnr_list)}")
     print(f"结果已保存到: {result_dir}")
+
 
