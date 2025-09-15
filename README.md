@@ -20,7 +20,7 @@ Extensive experiments demonstrate that AGATENet outperforms state-of-the-art (SO
 - [Project Structure](#project-structure)
 - [Environment Configuration](#environment-configuration)
 - [Dataset Preparation](#dataset-preparation)
-- [Training](#training)
+- [培训](#training)
 - [Testing](#testing)
 - [Pre-trained Models and Results](#pre-trained-models-and-results)
 - [Evaluation Metrics](#evaluation-metrics)
@@ -91,7 +91,7 @@ dehaze/
 
 3. Ensure that hazy images and clear images have corresponding filenames
 
-## Training
+##培训
 
 Start training with the following command:
 
@@ -151,7 +151,7 @@ Model performance is evaluated using the following metrics:
 ## Notes
 1. To adjust model parameters, please modify the relevant configurations in `main.py`
 
-## Expert Network Training and Evaluation
+## Expert Network (MOE) Training and Evaluation
 - Each expert is a complete AGATENet model
 - Expert parameters are frozen during training, only the gating network is trained
 - When training the mixture of experts model, pre-trained expert models (obtained from AGATENet training) for individual scenarios are required
