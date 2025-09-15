@@ -44,30 +44,30 @@ def eval_moe_model(moe_model, args, epoch=None):
             input_img = input_img.to(device)
             label_img = label_img.to(device)
 
-            # 图像尺寸处理 - 与valid.py保持一致
+    
             h, w = input_img.shape[-2], input_img.shape[-1]
             H = ((h + factor) // factor) * factor
             W = ((w + factor) // factor) * factor
             padh = H - h
             padw = W - w
 
-            # 填充处理
+            
             input_img_padded = f.pad(input_img, (0, padw, 0, padh), 'reflect')
 
             # MoE模型推理
             pred = moe_model.inference(input_img_padded)
-            pred = pred[:, :, :h, :w]  # 移除填充
+            pred = pred[:, :, :h, :w]  
             
-            # 数值处理
+            
             pred_clip = torch.clamp(pred, 0, 1)
             pred_numpy = pred_clip.squeeze(0).cpu().numpy()
             label_numpy = label_img.squeeze(0).cpu().numpy()
 
-            # 计算指标 - 与valid.py保持一致
+        
             psnr = peak_signal_noise_ratio(pred_numpy, label_numpy, data_range=1)
             ssim_val = ssim(pred_numpy, label_numpy, channel_axis=0, data_range=1)
 
-            # 记录指标
+        
             psnr_adder(psnr)
             ssim_adder(ssim_val)
 
@@ -86,4 +86,5 @@ def eval_moe_model(moe_model, args, epoch=None):
         print(f'\nEpoch {epoch} Validation Complete!' if epoch is not None else '\nValidation Complete!')
         moe_model.train()
         return avg_psnr, avg_ssim
+
 
