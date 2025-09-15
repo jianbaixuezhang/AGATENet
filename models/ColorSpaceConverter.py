@@ -4,12 +4,6 @@ import torch.nn.functional as F
 
 
 class RGBLABConverter(nn.Module):
-    """
-    RGB与LAB颜色空间双向转换模块
-    全通道归一化到[-1,1]范围
-    - RGB输入范围: [0, 1]
-    - LAB输出范围: L∈[-1,1], a∈[-1,1], b∈[-1,1]
-    """
 
     def __init__(self):
         super().__init__()
@@ -103,19 +97,3 @@ class RGBLABConverter(nn.Module):
         else:
             raise ValueError(f"Invalid mode: {mode}")
 
-# class ColorConsistencyLoss(nn.Module):
-#     """LAB颜色一致性损失"""
-#
-#     def __init__(self, weight=1.0):
-#         super().__init__()
-#         self.converter = RGBLABConverter()
-#         self.weight = weight
-#
-#     def forward(self, pred, target):
-#         # 转换到LAB空间
-#         pred_lab = self.converter(pred, 'rgb2lab')
-#         target_lab = self.converter(target, 'rgb2lab')
-#
-#         # 仅比较a和b通道
-#         loss = F.l1_loss(pred_lab[:, 1:], target_lab[:, 1:])
-#         return self.weight * loss
