@@ -102,7 +102,7 @@ if __name__ == '__main__':
     parser.add_argument('--data', type=str, default='realword', help='数据集类型')
     
     # 专家模型路径
-    parser.add_argument('--expert_dir', type=str, default='results/SEMHSADahazeFormer', 
+    parser.add_argument('--expert_dir', type=str, default='results/AGATENet', 
                        help='专家模型权重文件目录')
     
     # 训练模式或者测试模式
@@ -149,3 +149,4 @@ if __name__ == '__main__':
 
 
     main(args) 
+
