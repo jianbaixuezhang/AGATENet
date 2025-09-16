@@ -156,3 +156,6 @@ Model performance is evaluated using the following metrics:
 - Expert parameters are frozen during training, only the gating network is trained
 - When training the mixture of experts model, pre-trained expert models (obtained from AGATENet training) for individual scenarios are required
 - The configuration and usage of expert networks are similar to the above
+
+## e-mail
+if you have any question about  AGATENet, please contact: xingao2001911@163.com
