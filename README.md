@@ -162,16 +162,38 @@ Model performance is evaluated using the following metrics:
 ## bib
 
 @article{GAO2026134449,
+
+
 title = {AGATENet: An adaptive gated experts transformer network for unified scene dehazing},
+
+
 journal = {Neurocomputing},
+
+
 volume = {700},
+
+
 pages = {134449},
+
+
 year = {2026},
+
+
 issn = {0925-2312},
+
+
 doi = {https://doi.org/10.1016/j.neucom.2026.134449},
+
+
 url = {https://www.sciencedirect.com/science/article/pii/S0925231226018473},
+
+
 author = {Xin Gao and Zhiyu Lyu},
+
+
 keywords = {Image dehazing, Precise masked sparse attention, Cross-level, Mixture of experts},
+
+
 abstract = {Real-world haze exhibits continuously varying concentration distributions, which makes strong haze removal challenging. Many dehazing networks perform well when the haze pattern or scene type is relatively consistent. However, in real-world haze scenarios with diverse degradations, these methods often rely on specific assumptions or limited training domains. This restricts their generalization and prevents a unified treatment across conditions. To address this issue, we propose AGATENet, a unified framework that combines content-adaptive restoration with scene-adaptive expert selection. For restoration, we explicitly decouple luminance and chromatic components during reconstruction. We further introduce a chroma-only residual connection to reinject color information, while avoiding the reintroduction of haze-contaminated luminance. This design reduces the conflict between strong haze removal and faithful structure preservation. To handle spatially non-homogeneous degradation, a Precise Masked Sparse Attention module extracts haze-density-aware features and emphasizes severely degraded regions. In addition, a TransGuide Calibrator refines encoder–decoder fusion by aligning cross-stage features and preserving fine details. For adaptation to scene variability, we employ a gating mechanism that dynamically activates the most suitable pre-trained expert based on input haze characteristics. This enables automatic specialization to diverse haze types without manual priors. Extensive experiments demonstrate that AGATENet achieves competitive performance under complex and diverse real-world haze conditions. The source code is available at Github.}
 }
 
